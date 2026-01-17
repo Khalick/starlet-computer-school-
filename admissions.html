@@ -5,13 +5,659 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admissions - Starlet Computer Technology</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 9999;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+            border-radius: 50%;
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08) rotate(-6deg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+        }
+
+        /* ===== CSS Variables ===== */
+        :root {
+            --primary-color: #1e3a8a;
+            --primary-dark: #1e40af;
+            --secondary-color: #3b82f6;
+            --accent-color: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --light-gray: #f3f4f6;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* ===== Header ===== */
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-list a {
+            font-weight: 500;
+            color: var(--text-dark);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-list a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-list a:hover::after,
+        .nav-list a.active::after {
+            width: 100%;
+        }
+
+        .nav-list a.active {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* ===== Page Header ===== */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 150px 0 80px;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* ===== Section Styles ===== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== Admissions Section ===== */
+        .admissions-section {
+            padding: 80px 0;
+        }
+
+        .admissions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .admissions-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--white);
+        }
+
+        .card-header i {
+            font-size: 28px;
+        }
+
+        .card-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            color: var(--text-dark);
+        }
+
+        .card-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .requirements-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .requirements-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .requirements-list li i {
+            color: var(--accent-color);
+            margin-top: 4px;
+        }
+
+        .eligibility-note {
+            font-size: 14px;
+            color: var(--text-light);
+            margin: 15px 0 25px;
+            padding: 15px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        /* Fees Table */
+        .fees-table {
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .fees-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .fees-table th,
+        .fees-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .fees-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .fees-table tr:hover {
+            background-color: var(--light-gray);
+        }
+
+        .fee-note {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 15px;
+        }
+
+        .fee-note i {
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+
+        .application-note {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .application-note i {
+            color: var(--primary-color);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .application-note p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Quick Contact Buttons */
+        .quick-contact {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .quick-contact h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .quick-contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: var(--white);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .btn-call {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-call:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* ===== Process Section ===== */
+        .process-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .process-step h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* ===== CTA Section ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            color: var(--white);
+        }
+
+        .cta-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 60px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-list li i {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 992px) {
+            .admissions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header .container {
+                flex-wrap: wrap;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .header .btn {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .contact-list li {
+                justify-content: center;
+            }
+
+            .quick-contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quick-contact-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -119,35 +765,34 @@
                     </div>
                 </div>
 
+                <div class="admissions-card">
+                    <div class="card-header">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h2>Start Your Journey</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="application-note">
+                            <i class="fas fa-info-circle"></i>
+                            <p>After submitting, we will contact you via phone/WhatsApp to confirm your enrollment. For
+                                immediate assistance, call or WhatsApp us at <strong>0707 017 011</strong> or email
+                                <strong>starletcomputer@gmail.com</strong></p>
+                        </div>
 
-
-
-
-
-
-
-                <div class="application-note">
-                    <i class="fas fa-info-circle"></i>
-                    <p>After submitting, we will contact you via phone/WhatsApp to confirm your enrollment. For
-                        immediate assistance, call or WhatsApp us at <strong>0707 017 011</strong> or email
-                        <strong>starletcomputer@gmail.com</strong></p>
-                </div>
-
-                <div class="quick-contact">
-                    <h4>Quick Contact</h4>
-                    <div class="quick-contact-buttons">
-                        <a href="https://wa.me/254707017011?text=Hello%20Starlet%20Computer%20Technology%2C%20I%20would%20like%20to%20enroll%20for%20a%20course."
-                            class="btn btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp Us
-                        </a>
-                        <a href="tel:0707017011" class="btn btn-call">
-                            <i class="fas fa-phone"></i> Call Now
-                        </a>
+                        <div class="quick-contact">
+                            <h4>Quick Contact</h4>
+                            <div class="quick-contact-buttons">
+                                <a href="https://wa.me/254707017011?text=Hello%20Starlet%20Computer%20Technology%2C%20I%20would%20like%20to%20enroll%20for%20a%20course."
+                                    class="btn btn-whatsapp" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp Us
+                                </a>
+                                <a href="tel:0707017011" class="btn btn-call">
+                                    <i class="fas fa-phone"></i> Call Now
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
         </div>
     </section>
 
@@ -251,10 +896,94 @@
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/254707017011" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-        <img src="images/whatsapp-logo.svg" alt="WhatsApp" style="width:60px;height:60px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="24" fill="#25D366" />
+            <path fill="#fff"
+                d="M24 10c-7.73 0-14 6.27-14 14 0 2.47.65 4.87 1.88 6.99L10 38l7.25-1.9A13.93 13.93 0 0024 38c7.73 0 14-6.27 14-14s-6.27-14-14-14zm0 25.5c-2.17 0-4.3-.58-6.16-1.69l-.44-.26-4.57 1.2 1.22-4.45-.29-.46A11.44 11.44 0 0112.5 24c0-6.34 5.16-11.5 11.5-11.5S35.5 17.66 35.5 24 30.34 35.5 24 35.5zm6.3-8.59c-.35-.17-2.05-1.01-2.37-1.13-.32-.11-.55-.17-.78.17-.23.35-.9 1.13-1.1 1.36-.2.23-.41.26-.76.09-.35-.17-1.47-.54-2.8-1.73-1.04-.92-1.74-2.06-1.94-2.41-.2-.35-.02-.54.15-.71.16-.16.35-.41.52-.62.17-.2.23-.35.35-.58.11-.23.06-.44-.03-.61-.09-.17-.78-1.88-1.07-2.58-.28-.67-.57-.58-.78-.59-.2-.01-.44-.01-.67-.01-.23 0-.61.09-.93.44-.32.35-1.22 1.19-1.22 2.9s1.25 3.37 1.42 3.6c.17.23 2.46 3.76 5.96 5.27.83.36 1.48.58 1.99.74.84.27 1.6.23 2.2.14.67-.1 2.05-.84 2.34-1.65.29-.81.29-1.5.2-1.65-.09-.14-.32-.23-.67-.4z" />
+        </svg>
     </a>
 
-    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navList = document.querySelector('.nav-list');
+
+            if (mobileMenuBtn && navList) {
+                mobileMenuBtn.addEventListener('click', function () {
+                    navList.classList.toggle('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (navList.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+
+            // Smooth Scroll for Navigation Links
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const headerHeight = document.querySelector('.header').offsetHeight;
+                            const targetPosition = target.offsetTop - headerHeight;
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            if (navList && navList.classList.contains('active')) {
+                                navList.classList.remove('active');
+                                const icon = mobileMenuBtn.querySelector('i');
+                                icon.classList.remove('fa-times');
+                                icon.classList.add('fa-bars');
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Header Scroll Effect
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', function () {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 100) {
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+                }
+            });
+
+            // Animate elements on scroll
+            const animateOnScroll = function () {
+                const elements = document.querySelectorAll('.process-step');
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            const animatedElements = document.querySelectorAll('.process-step');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.5s ease';
+            });
+
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll();
+        });
+    </script>
 </body>
 
 </html>
