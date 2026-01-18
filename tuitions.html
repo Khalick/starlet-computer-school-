@@ -4,11 +4,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuitions & Homework Help - Starlet Computer Technology</title>
+
+    <!-- Primary Meta Tags -->
+    <title>Tuition Services & Homework Help in Nairobi | Starlet Computer Technology</title>
+    <meta name="title" content="Tuition Services & Homework Help in Nairobi | Starlet Computer Technology">
+    <meta name="description"
+        content="Quality tuition services for IGCSE, IB, GCSE, A-Level, KCSE & more in Nairobi. Home tuition, virtual classes, homework help. Experienced teachers, personalized attention. Contact Starlet today!">
+    <meta name="keywords"
+        content="tuition services Nairobi, homework help Kenya, IGCSE tutor Nairobi, IB tuition Kenya, GCSE tutor, A-Level tutoring, KCSE tuition, home schooling Nairobi, private tutor Kenya, online tuition, holiday tuition Nairobi, exam preparation Kenya">
+    <meta name="author" content="Starlet Computer Technology">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://starletcomputertechnology.co.ke/tuitions.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://starletcomputertechnology.co.ke/tuitions.html">
+    <meta property="og:title" content="Tuition Services & Homework Help in Nairobi">
+    <meta property="og:description"
+        content="Quality tuition for IGCSE, IB, GCSE, A-Level, KCSE. Home tuition, virtual classes, homework help. Experienced teachers!">
+    <meta property="og:image" content="https://starletcomputertechnology.co.ke/images/study-group-african-people.jpg">
+    <meta property="og:site_name" content="Starlet Computer Technology">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://starletcomputertechnology.co.ke/tuitions.html">
+    <meta property="twitter:title" content="Tuition Services & Homework Help in Nairobi">
+    <meta property="twitter:description"
+        content="Quality tuition for all curricula. Home tuition, virtual classes, homework help available.">
+    <meta property="twitter:image"
+        content="https://starletcomputertechnology.co.ke/images/study-group-african-people.jpg">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Structured Data - Service -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Tuition & Homework Help Services",
+        "provider": {
+            "@type": "Organization",
+            "name": "Starlet Computer Technology",
+            "url": "https://starletcomputertechnology.co.ke"
+        },
+        "description": "Quality tuition services for all major curricula including IGCSE, IB, GCSE, A-Level, KCSE. Available as center-based, virtual, or home tuition.",
+        "areaServed": {
+            "@type": "City",
+            "name": "Nairobi"
+        },
+        "serviceType": ["Private Tutoring", "Homework Help", "Exam Preparation", "Home Schooling"],
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "KES"
+            }
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Curriculum Coverage",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IGCSE Tuition"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "IB Tuition"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "GCSE Tuition"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "A-Level Tuition"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "KCSE Tuition"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SATs Preparation"}}
+            ]
+        }
+    }
+    </script>
     <style>
         /* Floating WhatsApp Button */
         .whatsapp-float {
@@ -640,6 +715,31 @@
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .tuition-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .curriculum-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .page-header {
+                min-height: 350px;
+                padding: 140px 0 80px;
+            }
+
+            .page-header h1 {
+                font-size: 38px;
+            }
+
+            .page-header p {
+                font-size: 17px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -657,6 +757,20 @@
                 flex-direction: column;
                 padding: 20px;
                 box-shadow: var(--shadow);
+                gap: 0;
+            }
+
+            .nav-list li {
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-list li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-list a {
+                display: block;
+                padding: 15px 0;
             }
 
             .nav-list.active {
@@ -671,17 +785,167 @@
                 display: none;
             }
 
+            .logo h1 {
+                font-size: 18px;
+            }
+
+            .page-header {
+                min-height: 300px;
+                padding: 120px 0 60px;
+            }
+
             .page-header h1 {
-                font-size: 32px;
+                font-size: 28px;
+                line-height: 1.3;
+            }
+
+            .page-header p {
+                font-size: 15px;
+                padding: 0 10px;
             }
 
             .section-header h2 {
+                font-size: 24px;
+            }
+
+            .section-header p {
+                font-size: 15px;
+                padding: 0 10px;
+            }
+
+            .tuition-section,
+            .curriculum-section,
+            .benefits-section,
+            .homework-section,
+            .pricing-section {
+                padding: 50px 0;
+            }
+
+            .tuition-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .tuition-card {
+                padding: 30px 20px;
+            }
+
+            .tuition-card h3 {
+                font-size: 20px;
+            }
+
+            .tuition-card p {
+                font-size: 14px;
+            }
+
+            .tuition-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .tuition-icon i {
                 font-size: 28px;
+            }
+
+            .curriculum-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .curriculum-item {
+                padding: 18px 20px;
+            }
+
+            .curriculum-item span {
+                font-size: 15px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .benefit-card {
+                padding: 25px 20px;
+            }
+
+            .benefit-card i {
+                font-size: 32px;
+            }
+
+            .benefit-card h4 {
+                font-size: 16px;
+            }
+
+            .homework-content {
+                gap: 30px;
+            }
+
+            .homework-text h2 {
+                font-size: 24px;
+                text-align: center;
+            }
+
+            .homework-text p {
+                font-size: 15px;
+                text-align: center;
+            }
+
+            .homework-features {
+                margin: 20px 0;
+            }
+
+            .homework-features li {
+                font-size: 14px;
+            }
+
+            .homework-text .btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .homework-image img {
+                border-radius: 15px;
+            }
+
+            .pricing-note {
+                font-size: 14px;
+                padding: 15px;
+            }
+
+            .pricing-section .btn-large {
+                display: block;
+                width: 100%;
+                max-width: 300px;
+                margin: 10px auto;
+            }
+
+            .cta-section {
+                padding: 50px 0;
+            }
+
+            .cta-content h2 {
+                font-size: 24px;
+            }
+
+            .cta-content p {
+                font-size: 15px;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 30px;
+            }
+
+            .footer-col h3 {
+                font-size: 20px;
+            }
+
+            .footer-col h4 {
+                font-size: 16px;
+                margin-bottom: 15px;
             }
 
             .social-links {
@@ -691,9 +955,46 @@
             .contact-list li {
                 justify-content: center;
             }
+
+            .footer-bottom {
+                margin-top: 30px;
+            }
         }
 
         @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .page-header h1 {
+                font-size: 24px;
+            }
+
+            .page-header p {
+                font-size: 14px;
+            }
+
+            .section-header {
+                margin-bottom: 30px;
+            }
+
+            .section-header h2 {
+                font-size: 22px;
+            }
+
+            .tuition-card {
+                padding: 25px 15px;
+            }
+
+            .tuition-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .tuition-icon i {
+                font-size: 24px;
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -701,7 +1002,22 @@
 
             .cta-buttons .btn {
                 width: 100%;
-                max-width: 250px;
+                max-width: 280px;
+            }
+
+            .homework-text .btn {
+                padding: 14px 24px;
+                font-size: 14px;
+            }
+
+            .whatsapp-float {
+                right: 15px;
+                bottom: 15px;
+            }
+
+            .whatsapp-float svg {
+                width: 50px;
+                height: 50px;
             }
         }
 
