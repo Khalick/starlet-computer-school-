@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admissions - Starlet Computer Technology</title>
+    <title>Tuitions & Homework Help - Starlet Computer Technology</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -115,6 +115,31 @@
             color: var(--primary-color);
         }
 
+        .btn-large {
+            padding: 16px 36px;
+            font-size: 16px;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: var(--white);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .btn-call {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-call:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
         /* ===== Header with Glassmorphism ===== */
         .header {
             background: rgba(255, 255, 255, 0.85);
@@ -199,22 +224,46 @@
 
         /* ===== Page Header ===== */
         .page-header {
-            background: #1f2937;
-            padding: 150px 0 80px;
+            background: url('images/study-group-african-people.jpg') center center/cover no-repeat;
+            padding: 160px 0 100px;
             text-align: center;
             color: var(--white);
             position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.85) 0%, rgba(59, 130, 246, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .page-header .container {
+            position: relative;
+            z-index: 2;
         }
 
         .page-header h1 {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .page-header p {
-            font-size: 18px;
-            opacity: 0.9;
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 650px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         /* ===== Section Styles ===== */
@@ -237,226 +286,229 @@
             margin: 0 auto;
         }
 
-        /* ===== Admissions Section ===== */
-        .admissions-section {
+        /* ===== Tuition Section ===== */
+        .tuition-section {
             padding: 80px 0;
+            background: linear-gradient(135deg, #e8f4fc 0%, #f0e6ff 50%, #e6f7ff 100%);
         }
 
-        .admissions-grid {
+        .tuition-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
-        .admissions-card {
-            background-color: var(--white);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
+        .tuition-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(30, 58, 138, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
             overflow: hidden;
         }
 
-        .card-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            padding: 25px 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: var(--white);
+        .tuition-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
         }
 
-        .card-header i {
-            font-size: 28px;
+        .tuition-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.25), inset 0 0 30px rgba(255, 255, 255, 0.6);
         }
 
-        .card-header h2 {
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .card-content {
-            padding: 30px;
-        }
-
-        .card-content h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin: 25px 0 15px;
-            color: var(--text-dark);
-        }
-
-        .card-content h3:first-child {
-            margin-top: 0;
-        }
-
-        .requirements-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .requirements-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 14px;
-            color: var(--text-light);
-        }
-
-        .requirements-list li i {
-            color: var(--accent-color);
-            margin-top: 4px;
-        }
-
-        .eligibility-note {
-            font-size: 14px;
-            color: var(--text-light);
-            margin: 15px 0 25px;
-            padding: 15px;
-            background-color: var(--light-gray);
-            border-radius: 8px;
-        }
-
-        /* Fees Table */
-        .fees-table {
-            margin: 20px 0;
-            overflow-x: auto;
-        }
-
-        .fees-table table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-
-        .fees-table th,
-        .fees-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .fees-table th {
-            background-color: var(--primary-color);
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .fees-table tr:hover {
-            background-color: var(--light-gray);
-        }
-
-        .fee-note {
-            font-size: 13px;
-            color: var(--text-light);
-            margin-top: 15px;
-        }
-
-        .fee-note i {
-            color: var(--primary-color);
-            margin-right: 5px;
-        }
-
-        .application-note {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: var(--light-gray);
-            border-radius: 8px;
-        }
-
-        .application-note i {
-            color: var(--primary-color);
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .application-note p {
-            font-size: 14px;
-            color: var(--text-light);
-        }
-
-        /* Quick Contact Buttons */
-        .quick-contact {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .quick-contact h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .quick-contact-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: var(--white);
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-            transform: translateY(-2px);
-        }
-
-        .btn-call {
-            background-color: var(--secondary-color);
-            color: var(--white);
-        }
-
-        .btn-call:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        /* ===== Process Section ===== */
-        .process-section {
-            padding: 80px 0;
-            background-color: var(--light-gray);
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .process-step {
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
+        .tuition-icon {
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-size: 24px;
-            font-weight: 700;
             margin: 0 auto 20px;
         }
 
-        .process-step h3 {
+        .tuition-icon i {
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .tuition-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .tuition-card p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== Curriculum Section ===== */
+        .curriculum-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .curriculum-item {
+            background: var(--light-gray);
+            padding: 25px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .curriculum-item:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            transform: translateX(10px);
+        }
+
+        .curriculum-item i {
+            font-size: 24px;
+            color: var(--accent-color);
+        }
+
+        .curriculum-item:hover i {
+            color: var(--white);
+        }
+
+        .curriculum-item span {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* ===== Benefits Section ===== */
+        .benefits-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .benefit-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h4 {
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 10px;
         }
 
-        .process-step p {
+        .benefit-card p {
             font-size: 14px;
             color: var(--text-light);
+        }
+
+        /* ===== Homework Help Section ===== */
+        .homework-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .homework-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .homework-text h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .homework-text p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .homework-features {
+            margin: 25px 0;
+        }
+
+        .homework-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .homework-features li i {
+            color: var(--accent-color);
+            font-size: 18px;
+        }
+
+        .homework-image {
+            position: relative;
+        }
+
+        .homework-image img {
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ===== Pricing Section ===== */
+        .pricing-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--light-gray) 0%, #e8f4fc 100%);
+        }
+
+        .pricing-note {
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-light);
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
         }
 
         /* ===== CTA Section ===== */
@@ -581,12 +633,8 @@
 
         /* ===== Responsive Design ===== */
         @media (max-width: 992px) {
-            .admissions-grid {
+            .homework-content {
                 grid-template-columns: 1fr;
-            }
-
-            .process-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
 
             .footer-grid {
@@ -623,12 +671,12 @@
                 display: none;
             }
 
-            .section-header h2 {
-                font-size: 28px;
+            .page-header h1 {
+                font-size: 32px;
             }
 
-            .process-grid {
-                grid-template-columns: 1fr;
+            .section-header h2 {
+                font-size: 28px;
             }
 
             .footer-grid {
@@ -642,16 +690,6 @@
 
             .contact-list li {
                 justify-content: center;
-            }
-
-            .quick-contact-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .quick-contact-buttons .btn {
-                width: 100%;
-                max-width: 250px;
             }
         }
 
@@ -677,18 +715,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
             }
         }
 
@@ -720,38 +746,6 @@
             transition-delay: 0.4s;
         }
 
-        /* ===== Glassmorphism Cards ===== */
-        .admissions-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .admissions-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        .process-step {
-            transition: all 0.4s ease;
-        }
-
-        .process-step:hover {
-            transform: translateY(-5px);
-        }
-
-        .process-step:hover .step-number {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
-        }
-
-        .step-number {
-            transition: all 0.4s ease;
-        }
-
         /* ===== Button Shine Effect ===== */
         .btn-primary,
         .btn-whatsapp,
@@ -779,13 +773,6 @@
             left: 100%;
         }
 
-        .btn-primary:hover,
-        .btn-whatsapp:hover,
-        .btn-call:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
         /* ===== Section Header Underline ===== */
         .section-header h2 {
             position: relative;
@@ -810,39 +797,9 @@
         }
 
         /* ===== Social Links Animation ===== */
-        .social-links a {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         .social-links a:hover {
             transform: translateY(-5px) rotate(5deg);
             box-shadow: 0 10px 20px rgba(30, 58, 138, 0.3);
-        }
-
-        /* Table Row Hover */
-        .fees-table tr {
-            transition: all 0.3s ease;
-        }
-
-        .fees-table tbody tr:hover {
-            background-color: rgba(59, 130, 246, 0.1);
-        }
-
-        /* ===== CTA Enhanced ===== */
-        .cta-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: float 6s ease-in-out infinite;
         }
 
         /* ===== Page Load Animation ===== */
@@ -865,7 +822,7 @@
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="academics.html">Courses</a></li>
-                    <li><a href="tuitions.html">Tuitions Homework Help</a></li>
+                    <li><a href="tuitions.html" class="active">Tuitions Homework Help</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-menu-btn">
@@ -878,159 +835,191 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <div class="hero-overlay"
-            style="background: url('images/hero-bg.jpg') center center/cover no-repeat; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.45;">
-        </div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <h1>Admissions</h1>
-            <p>Join Starlet Computer Technology and start your journey in technology</p>
-        </div>
-    </section>
-
-    <!-- Admissions Content -->
-    <section class="admissions-section">
         <div class="container">
-            <div class="admissions-grid">
-                <!-- Requirements Section -->
-                <div class="admissions-card">
-                    <div class="card-header">
-                        <i class="fas fa-clipboard-list"></i>
-                        <h2>Who Can Join?</h2>
-                    </div>
-                    <div class="card-content">
-                        <h3>This Programme is Suited For:</h3>
-                        <ul class="requirements-list">
-                            <li><i class="fas fa-check-circle"></i> KCSE Graduates</li>
-                            <li><i class="fas fa-check-circle"></i> IT Certificate Holders</li>
-                            <li><i class="fas fa-check-circle"></i> Career Switchers into Tech</li>
-                            <li><i class="fas fa-check-circle"></i> Youth and Professionals Seeking Digital Skills</li>
-                            <li><i class="fas fa-check-circle"></i> Entrepreneurs in the Digital Space</li>
-                        </ul>
-
-                        <p class="eligibility-note">Anyone who would like to build on their problem-solving techniques
-                            and acquire transferable skills that one can take into the world of work is welcome to join.
-                        </p>
-
-                        <h3>What to Bring for Enrollment</h3>
-                        <ul class="requirements-list">
-                            <li><i class="fas fa-check-circle"></i> National ID or Birth Certificate (Copy)</li>
-                            <li><i class="fas fa-check-circle"></i> One Passport-size Photograph</li>
-                            <li><i class="fas fa-check-circle"></i> Registration Fee</li>
-                        </ul>
-
-                        <h3>Course Fees Summary</h3>
-                        <div class="fees-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Course</th>
-                                        <th>Duration</th>
-                                        <th>Fee</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Computer Packages</td>
-                                        <td>2 Months</td>
-                                        <td>Ksh. 5,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Advanced Level Stage 2</td>
-                                        <td>3 Months</td>
-                                        <td>Ksh. 8,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Advanced Level Stage 3</td>
-                                        <td>3 Months</td>
-                                        <td>Ksh. 15,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Diploma in ICT</td>
-                                        <td>Full Programme</td>
-                                        <td>Ksh. 50,000</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p class="fee-note"><i class="fas fa-info-circle"></i> Virtual classes available at slightly
-                            higher rates. Single package options available.</p>
-                    </div>
-                </div>
-
-                <div class="admissions-card">
-                    <div class="card-header">
-                        <i class="fas fa-graduation-cap"></i>
-                        <h2>Start Your Journey</h2>
-                    </div>
-                    <div class="card-content">
-                        <div class="application-note">
-                            <i class="fas fa-info-circle"></i>
-                            <p>After submitting, we will contact you via phone/WhatsApp to confirm your enrollment. For
-                                immediate assistance, call or WhatsApp us at <strong>0707 017 011</strong> or email
-                                <strong>starletcomputer@gmail.com</strong>
-                            </p>
-                        </div>
-
-                        <div class="quick-contact">
-                            <h4>Quick Contact</h4>
-                            <div class="quick-contact-buttons">
-                                <a href="https://wa.me/254707017011?text=Hello%20Starlet%20Computer%20Technology%2C%20I%20would%20like%20to%20enroll%20for%20a%20course."
-                                    class="btn btn-whatsapp" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> WhatsApp Us
-                                </a>
-                                <a href="tel:0707017011" class="btn btn-call">
-                                    <i class="fas fa-phone"></i> Call Now
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h1>Tuitions & Homework Help</h1>
+            <p>Quality tutoring services for all curricula - Center based, Virtual, or Home schooling</p>
         </div>
     </section>
 
-    <!-- Enrollment Process -->
-    <section class="process-section">
+    <!-- Tuition Services -->
+    <section class="tuition-section">
         <div class="container">
             <div class="section-header">
-                <h2>Enrollment Process</h2>
-                <p>Simple steps to join Starlet Computer Technology</p>
+                <h2>Our Tuition Services</h2>
+                <p>Flexible learning options tailored to your needs</p>
             </div>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Submit Form</h3>
-                    <p>Fill out the enrollment form above or contact us via WhatsApp/Phone.</p>
+            <div class="tuition-grid">
+                <div class="tuition-card reveal stagger-1">
+                    <div class="tuition-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3>Center-Based Tuition</h3>
+                    <p>Join our learning center in Umoja, Nairobi for focused group or individual sessions with
+                        experienced teachers in a conducive learning environment.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Confirmation Call</h3>
-                    <p>We'll call you to confirm your course selection and answer any questions.</p>
+                <div class="tuition-card reveal stagger-2">
+                    <div class="tuition-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Virtual Classes</h3>
+                    <p>Learn from anywhere with our interactive online sessions. Perfect for students who prefer
+                        flexible scheduling and remote learning.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Registration</h3>
-                    <p>Visit our center in Umoja with your ID and registration fee.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Start Learning</h3>
-                    <p>Begin your classes and start your journey to becoming tech-savvy!</p>
+                <div class="tuition-card reveal stagger-3">
+                    <div class="tuition-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Home Schooling</h3>
+                    <p>Private one-on-one tutoring at the comfort of your home. Our teachers come to you for
+                        personalized attention and stress-free learning.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA -->
+    <!-- Curriculum Coverage -->
+    <section class="curriculum-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Curriculum Coverage</h2>
+                <p>We offer tuition for all major curricula</p>
+            </div>
+            <div class="curriculum-grid">
+                <div class="curriculum-item reveal">
+                    <i class="fas fa-check-circle"></i>
+                    <span>IGCSE</span>
+                </div>
+                <div class="curriculum-item reveal">
+                    <i class="fas fa-check-circle"></i>
+                    <span>IB (International Baccalaureate)</span>
+                </div>
+                <div class="curriculum-item reveal">
+                    <i class="fas fa-check-circle"></i>
+                    <span>GCSE</span>
+                </div>
+                <div class="curriculum-item reveal">
+                    <i class="fas fa-check-circle"></i>
+                    <span>A-Level</span>
+                </div>
+                <div class="curriculum-item reveal">
+                    <i class="fas fa-check-circle"></i>
+                    <span>ACE</span>
+                </div>
+                <div class="curriculum-item reveal">
+                    <i class="fas fa-check-circle"></i>
+                    <span>American Curriculum</span>
+                </div>
+                <div class="curriculum-item reveal">
+                    <i class="fas fa-check-circle"></i>
+                    <span>SATs</span>
+                </div>
+                <div class="curriculum-item reveal">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Kenyan (KJSEA, KCSE)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Our Tuition Services?</h2>
+                <p>What sets us apart from the rest</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card reveal stagger-1">
+                    <i class="fas fa-user-graduate"></i>
+                    <h4>Experienced Teachers</h4>
+                    <p>Our dedicated and experienced teachers provide individual attention with a one-on-one approach.
+                    </p>
+                </div>
+                <div class="benefit-card reveal stagger-2">
+                    <i class="fas fa-heart"></i>
+                    <h4>Stress-Free Environment</h4>
+                    <p>Private tuition creates a stress-free environment, free from interruptions and distractions.</p>
+                </div>
+                <div class="benefit-card reveal stagger-3">
+                    <i class="fas fa-star"></i>
+                    <h4>Improved Confidence</h4>
+                    <p>Personalized attention improves students' self-esteem and confidence in their studies.</p>
+                </div>
+                <div class="benefit-card reveal stagger-4">
+                    <i class="fas fa-clock"></i>
+                    <h4>Flexible Scheduling</h4>
+                    <p>Choose from holiday sessions or regular classes that fit your schedule perfectly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Homework Help Section -->
+    <section class="homework-section">
+        <div class="container">
+            <div class="homework-content">
+                <div class="homework-text">
+                    <h2>Homework Help & Assignment Support</h2>
+                    <p>Struggling with homework or assignments? Our expert tutors are here to help! We provide
+                        comprehensive homework assistance across all subjects.</p>
+                    <p>Whether it's Mathematics, Sciences, Languages, or Humanities, our tutors break down complex
+                        concepts into easy-to-understand explanations.</p>
+                    <ul class="homework-features">
+                        <li><i class="fas fa-check-circle"></i> All subjects covered</li>
+                        <li><i class="fas fa-check-circle"></i> Step-by-step problem solving</li>
+                        <li><i class="fas fa-check-circle"></i> Exam preparation guidance</li>
+                        <li><i class="fas fa-check-circle"></i> Assignment writing assistance</li>
+                        <li><i class="fas fa-check-circle"></i> Project support</li>
+                    </ul>
+                    <a href="https://wa.me/254707017011?text=Hello%2C%20I%20need%20homework%20help"
+                        class="btn btn-primary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Get Homework Help Now
+                    </a>
+                </div>
+                <div class="homework-image">
+                    <img src="images/people-studying-peacefully-library.jpg" alt="Students studying">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Note -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get Started Today</h2>
+                <p>Contact us for personalized pricing based on your needs</p>
+            </div>
+            <div class="pricing-note">
+                <i class="fas fa-info-circle"
+                    style="font-size: 24px; color: var(--primary-color); margin-bottom: 10px;"></i>
+                <p style="margin: 0;"><strong>Pricing varies based on:</strong> Curriculum type, Subject, Grade level,
+                    Number of sessions, and Location (for home tuition). Contact us for a customized quote tailored to
+                    your specific requirements.</p>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://wa.me/254707017011?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20tuition%20services"
+                    class="btn btn-whatsapp btn-large" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Us for Quote
+                </a>
+                <a href="tel:0707017011" class="btn btn-call btn-large" style="margin-left: 15px;">
+                    <i class="fas fa-phone"></i> Call 0707 017 011
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>Have Questions About Enrollment?</h2>
-                <p>Our team is here to help you every step of the way.</p>
+                <h2>Ready to Excel in Your Studies?</h2>
+                <p>Join hundreds of students who have improved their grades with Starlet Tuitions</p>
                 <div class="cta-buttons">
-                    <a href="tel:0707017011" class="btn btn-primary"><i class="fas fa-phone"></i> Call 0707 017 011</a>
-                    <a href="https://wa.me/254707017011" class="btn btn-secondary" target="_blank"><i
-                            class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://wa.me/254707017011" class="btn btn-primary btn-large" target="_blank"><i
+                            class="fab fa-whatsapp"></i> Enroll Now</a>
+                    <a href="index.html#contact" class="btn btn-secondary btn-large"><i class="fas fa-envelope"></i>
+                        Contact Us</a>
                 </div>
             </div>
         </div>
@@ -1059,17 +1048,17 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="academics.html">Courses</a></li>
-                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="tuitions.html">Tuitions Homework Help</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Our Courses</h4>
+                    <h4>Our Services</h4>
                     <ul>
-                        <li><a href="academics.html#computer-packages">Computer Packages</a></li>
-                        <li><a href="academics.html#advanced-stage-2">Advanced Level Stage 2</a></li>
-                        <li><a href="academics.html#advanced-stage-3">Advanced Level Stage 3</a></li>
-                        <li><a href="academics.html#diploma">Diploma in ICT</a></li>
+                        <li><a href="#center-tuition">Center-Based Tuition</a></li>
+                        <li><a href="#virtual-classes">Virtual Classes</a></li>
+                        <li><a href="#home-schooling">Home Schooling</a></li>
+                        <li><a href="#homework-help">Homework Help</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1144,7 +1133,7 @@
 
             // Enhanced Scroll Reveal Animation
             const revealElements = function () {
-                const reveals = document.querySelectorAll('.reveal, .admissions-card, .process-step, .section-header');
+                const reveals = document.querySelectorAll('.reveal, .tuition-card, .curriculum-item, .benefit-card');
                 reveals.forEach(element => {
                     const elementTop = element.getBoundingClientRect().top;
                     const windowHeight = window.innerHeight;
@@ -1154,7 +1143,7 @@
                 });
             };
 
-            // Header scroll effect with glassmorphism
+            // Header scroll effect
             const header = document.querySelector('.header');
             window.addEventListener('scroll', function () {
                 if (window.scrollY > 50) {
@@ -1162,19 +1151,6 @@
                 } else {
                     header.classList.remove('scrolled');
                 }
-            });
-
-            // Initialize reveal classes
-            document.querySelectorAll('.admissions-card').forEach((card, index) => {
-                card.classList.add('reveal', `stagger-${index + 1}`);
-            });
-
-            document.querySelectorAll('.process-step').forEach((step, index) => {
-                step.classList.add('reveal', `stagger-${index + 1}`);
-            });
-
-            document.querySelectorAll('.section-header').forEach(header => {
-                header.classList.add('reveal');
             });
 
             window.addEventListener('scroll', revealElements);

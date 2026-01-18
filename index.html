@@ -122,15 +122,24 @@
             font-size: 16px;
         }
 
-        /* ===== Header ===== */
+        /* ===== Header with Glassmorphism ===== */
         .header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.48) 0%, rgba(240, 248, 255, 0.48) 100%);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            box-shadow: 0 8px 32px rgba(30, 58, 138, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(230, 240, 255, 0.45) 100%);
+            box-shadow: 0 8px 32px rgba(30, 58, 138, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
         }
 
         .header .container {
@@ -197,7 +206,7 @@
 
         /* ===== Hero Section ===== */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: #1f2937;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -211,8 +220,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(30, 58, 138, 0.55);
-            mix-blend-mode: multiply;
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .hero-content {
@@ -222,6 +230,13 @@
             color: var(--white);
             max-width: 800px;
             margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 50px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         .hero-content h1 {
@@ -266,7 +281,8 @@
         /* ===== Why Us Section ===== */
         .why-us-section {
             padding: 80px 0;
-            background-color: var(--light-gray);
+            background: linear-gradient(135deg, #e8f4fc 0%, #f0e6ff 50%, #e6f7ff 100%);
+            position: relative;
         }
 
         .features-grid {
@@ -276,16 +292,33 @@
         }
 
         .feature-card {
-            background-color: var(--white);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 248, 255, 0.8) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 40px 30px;
-            border-radius: 12px;
+            border-radius: 16px;
             text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            box-shadow: 0 8px 32px rgba(30, 58, 138, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.25), inset 0 0 30px rgba(255, 255, 255, 0.6);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(230, 240, 255, 0.9) 100%);
         }
 
         .feature-icon {
@@ -597,10 +630,772 @@
                 max-width: 250px;
             }
         }
+
+        /* ===== Promotional Sidebar ===== */
+        .promo-sidebar {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 998;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(59, 130, 246, 0.95));
+            border-radius: 12px 0 0 12px;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .promo-sidebar.collapsed {
+            right: -220px;
+        }
+
+        .promo-sidebar-toggle {
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 12px 0 0 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .promo-sidebar-toggle:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        }
+
+        .promo-sidebar-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .promo-sidebar.collapsed .promo-sidebar-toggle i {
+            transform: rotate(180deg);
+        }
+
+        .promo-card {
+            width: 200px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .promo-card:hover {
+            transform: scale(1.03);
+        }
+
+        .promo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .promo-card-cta {
+            background: var(--accent-color);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .promo-sidebar-header {
+            text-align: center;
+            padding: 8px;
+            color: white;
+        }
+
+        .promo-sidebar-header h4 {
+            font-size: 14px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .promo-sidebar-header p {
+            font-size: 11px;
+            margin: 4px 0 0;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .promo-sidebar {
+                display: none;
+            }
+        }
+
+        /* ===== Animation Keyframes ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* ===== Scroll Reveal Classes ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Staggered Animation Delays */
+        .stagger-1 {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            transition-delay: 0.4s;
+        }
+
+        .stagger-5 {
+            transition-delay: 0.5s;
+        }
+
+        /* ===== Hero Animations ===== */
+        .hero-content h1 {
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        .hero-content p {
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-content .btn {
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        /* ===== Glassmorphism Feature Cards ===== */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+        }
+
+        .feature-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== Button Enhancements ===== */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
+        }
+
+        /* ===== Glassmorphism Contact Form ===== */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(30, 58, 138, 0.2);
+        }
+
+        /* ===== Enhanced CTA Section ===== */
+        .cta-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== Section Header Animations ===== */
+        .section-header h2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        .section-header:hover h2::after {
+            width: 100px;
+        }
+
+        /* ===== Contact Item Hover ===== */
+        .contact-item {
+            transition: all 0.3s ease;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .contact-item:hover {
+            background: rgba(30, 58, 138, 0.05);
+            transform: translateX(10px);
+        }
+
+        .contact-item:hover i {
+            transform: scale(1.1);
+        }
+
+        .contact-item i {
+            transition: all 0.3s ease;
+        }
+
+        /* ===== Footer Enhancements ===== */
+        .social-links a {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.3);
+        }
+
+        /* ===== Glassmorphism Promo Sidebar ===== */
+        .promo-sidebar {
+            background: rgba(30, 58, 138, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===== Floating Animation for Icons ===== */
+        .feature-icon i {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .feature-card:nth-child(2) .feature-icon i {
+            animation-delay: 0.5s;
+        }
+
+        .feature-card:nth-child(3) .feature-icon i {
+            animation-delay: 1s;
+        }
+
+        .feature-card:nth-child(4) .feature-icon i {
+            animation-delay: 1.5s;
+        }
+
+        /* ===== Smooth Page Load ===== */
+        body {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* ===== ADVANCED ANIMATIONS ===== */
+
+        /* Typing Effect */
+        .typing-text {
+            overflow: hidden;
+            border-right: 3px solid var(--white);
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+            display: inline-block;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: var(--white);
+            }
+        }
+
+        /* Particle Effects Container */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Counter Animation */
+        .counter-number {
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Text Gradient Animation */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color), var(--secondary-color), var(--primary-color));
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Morphing Blob Shapes */
+        .blob-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: morphBlob 15s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.6), rgba(16, 185, 129, 0.6));
+            top: -100px;
+            left: -100px;
+        }
+
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.6));
+            bottom: -80px;
+            right: -80px;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.5), rgba(245, 158, 11, 0.5));
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -10s;
+        }
+
+        @keyframes morphBlob {
+
+            0%,
+            100% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+                transform: rotate(0deg) scale(1);
+            }
+
+            25% {
+                border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+                transform: rotate(90deg) scale(1.1);
+            }
+
+            50% {
+                border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+                transform: rotate(180deg) scale(1);
+            }
+
+            75% {
+                border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%;
+                transform: rotate(270deg) scale(0.9);
+            }
+        }
+
+        /* Bounce Animation */
+        @keyframes bounce {
+
+            0%,
+            20%,
+            53%,
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            40%,
+            43% {
+                transform: translate3d(0, -20px, 0);
+            }
+
+            70% {
+                transform: translate3d(0, -10px, 0);
+            }
+
+            90% {
+                transform: translate3d(0, -4px, 0);
+            }
+        }
+
+        .bounce-in {
+            animation: bounce 1s ease;
+        }
+
+        /* Parallax Effect */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Glowing Border Animation */
+        @keyframes glowBorder {
+
+            0%,
+            100% {
+                box-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4);
+            }
+        }
+
+        .glow-border {
+            animation: glowBorder 2s ease-in-out infinite;
+        }
+
+        /* Pulse Animation on Hover for CTA buttons */
+        .btn-primary:hover {
+            animation: pulse 0.5s ease;
+        }
+
+        /* Stats Section Styling */
+        .stats-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Promotional Sidebar -->
+    <div class="promo-sidebar" id="promoSidebar">
+        <button class="promo-sidebar-toggle" onclick="togglePromoSidebar()" aria-label="Toggle promotions">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="promo-sidebar-header">
+            <h4>🎓 Our Programs</h4>
+            <p>Enroll Now!</p>
+        </div>
+        <a href="https://wa.me/254707017011?text=Hi!%20I'm%20interested%20in%20enrolling%20for%20computer%20training."
+            target="_blank" class="promo-card">
+            <img src="images/promo-poster-2.png" alt="Courses Offered at Starlet Computer">
+            <div class="promo-card-cta">
+                <i class="fab fa-whatsapp"></i> Enroll via WhatsApp
+            </div>
+        </a>
+        <a href="https://wa.me/254707017011?text=Hi!%20I'm%20interested%20in%20the%20sponsored%20computer%20training."
+            target="_blank" class="promo-card">
+            <img src="images/promo-poster-1.jpg" alt="Sponsored Training Programs">
+            <div class="promo-card-cta">
+                <i class="fab fa-whatsapp"></i> Enroll via WhatsApp
+            </div>
+        </a>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -613,7 +1408,7 @@
                 <ul class="nav-list">
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="academics.html">Courses</a></li>
-                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="tuitions.html">Tuitions Homework Help</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-menu-btn">
@@ -625,15 +1420,26 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero parallax-bg">
+        <!-- Morphing Blob Shapes -->
+        <div class="blob-container">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+        <!-- Particles Container -->
+        <div class="particles-container" id="particles"></div>
         <div class="hero-overlay"
-            style="background: url('images/hero-bg.jpg') center center/cover no-repeat; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.45;">
+            style="background: url('images/hero-bg.jpg') center center/cover no-repeat; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+        </div>
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background: rgba(0, 0, 0, 0.4);">
         </div>
         <div class="container" style="position: relative; z-index: 2;">
             <div class="hero-content">
-                <h1>Welcome to Starlet Computer Technology</h1>
+                <h1 class="gradient-text">Welcome to Starlet Computer Technology</h1>
                 <p>Your gateway to practical ICT skills and professional success</p>
-                <a href="https://wa.me/254707017011" class="btn btn-primary" target="_blank">Apply Now</a>
+                <a href="https://wa.me/254707017011" class="btn btn-primary glow-border" target="_blank">Apply Now</a>
             </div>
         </div>
     </section>
@@ -652,6 +1458,30 @@
                     commitment to quality training, hands-on learning, and student success continues to drive our work
                     as we help bridge the digital skills gap and open up opportunities for learners of all backgrounds.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section with Counters -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <h3><span class="counter" data-target="20000">0</span>+</h3>
+                    <p>Students Trained</p>
+                </div>
+                <div class="stat-item reveal stagger-1">
+                    <h3><span class="counter" data-target="11">0</span>+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item reveal stagger-2">
+                    <h3><span class="counter" data-target="50">0</span>+</h3>
+                    <p>Expert Trainers</p>
+                </div>
+                <div class="stat-item reveal stagger-3">
+                    <h3><span class="counter" data-target="30">0</span>+</h3>
+                    <p>Courses Offered</p>
+                </div>
             </div>
         </div>
     </section>
@@ -774,10 +1604,10 @@
                     <div class="social-links">
                         <a href="https://facebook.com/starlet_compta2013" target="_blank"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a href="https://tiktok.com/@starlet_compta2013" target="_blank"><i
+                        <a href="https://www.tiktok.com/@starlet_compta2013?_r=1&_t=ZM-9399DxzwXwS" target="_blank"><i
                                 class="fab fa-tiktok"></i></a>
-                        <a href="https://instagram.com/starlet_compta2013" target="_blank"><i
-                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/starlet_compta2013?igsh=MWwybzZobTIwNTJ2dA=="
+                            target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://wa.me/254707017011" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -871,17 +1701,6 @@
                 });
             });
 
-            // Header Scroll Effect
-            const header = document.querySelector('.header');
-            window.addEventListener('scroll', function () {
-                const currentScroll = window.pageYOffset;
-                if (currentScroll > 100) {
-                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                } else {
-                    header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
-                }
-            });
-
             // Contact Form Submission
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
@@ -892,30 +1711,156 @@
                 });
             }
 
-            // Animate elements on scroll
-            const animateOnScroll = function () {
-                const elements = document.querySelectorAll('.feature-card');
-                elements.forEach(element => {
+            // Enhanced Scroll Reveal Animation
+            const revealElements = function () {
+                const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .feature-card, .contact-item, .section-header');
+
+                reveals.forEach(element => {
                     const elementTop = element.getBoundingClientRect().top;
                     const windowHeight = window.innerHeight;
-                    if (elementTop < windowHeight - 100) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
+                    const revealPoint = 100;
+
+                    if (elementTop < windowHeight - revealPoint) {
+                        element.classList.add('active');
                     }
                 });
             };
 
-            // Set initial state for animation
-            const animatedElements = document.querySelectorAll('.feature-card');
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'all 0.5s ease';
+            // Header scroll effect
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
             });
 
-            window.addEventListener('scroll', animateOnScroll);
-            animateOnScroll();
+            // Initialize reveal classes on elements
+            document.querySelectorAll('.feature-card').forEach((card, index) => {
+                card.classList.add('reveal', `stagger-${index + 1}`);
+            });
+
+            document.querySelectorAll('.contact-item').forEach((item, index) => {
+                item.classList.add('reveal', `stagger-${index + 1}`);
+            });
+
+            document.querySelectorAll('.section-header').forEach(header => {
+                header.classList.add('reveal');
+            });
+
+            // Run reveal on scroll and initial load
+            window.addEventListener('scroll', revealElements);
+            revealElements();
+
+            // Add active class after a small delay for initial elements in viewport
+            setTimeout(() => {
+                revealElements();
+            }, 100);
+
+            // ===== ADVANCED ANIMATIONS =====
+
+            // Particle Effect Generator
+            function createParticles() {
+                const container = document.getElementById('particles');
+                if (!container) return;
+
+                const particleCount = 30;
+
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+
+                    // Random position
+                    particle.style.left = Math.random() * 100 + '%';
+
+                    // Random size
+                    const size = Math.random() * 6 + 3;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+
+                    // Random animation duration
+                    const duration = Math.random() * 10 + 10;
+                    particle.style.animationDuration = duration + 's';
+
+                    // Random delay
+                    particle.style.animationDelay = Math.random() * 10 + 's';
+
+                    container.appendChild(particle);
+                }
+            }
+            createParticles();
+
+            // Counter Animation
+            function animateCounters() {
+                const counters = document.querySelectorAll('.counter');
+
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16);
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current).toLocaleString();
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target.toLocaleString();
+                        }
+                    };
+
+                    // Only animate when visible
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting && current === 0) {
+                                updateCounter();
+                            }
+                        });
+                    }, { threshold: 0.5 });
+
+                    observer.observe(counter);
+                });
+            }
+            animateCounters();
+
+            // Parallax Scroll Effect
+            window.addEventListener('scroll', function () {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.parallax-bg');
+
+                parallaxElements.forEach(element => {
+                    const rate = scrolled * 0.3;
+                    element.style.backgroundPositionY = rate + 'px';
+                });
+
+                // Blob movement on scroll
+                const blobs = document.querySelectorAll('.blob');
+                blobs.forEach((blob, index) => {
+                    const rate = scrolled * (0.1 + index * 0.05);
+                    blob.style.transform = `translateY(${rate}px)`;
+                });
+            });
+
+            // Mouse move effect for hero
+            document.querySelector('.hero')?.addEventListener('mousemove', function (e) {
+                const blobs = this.querySelectorAll('.blob');
+                const mouseX = e.clientX / window.innerWidth - 0.5;
+                const mouseY = e.clientY / window.innerHeight - 0.5;
+
+                blobs.forEach((blob, index) => {
+                    const intensity = (index + 1) * 20;
+                    blob.style.transform = `translate(${mouseX * intensity}px, ${mouseY * intensity}px)`;
+                });
+            });
         });
+
+        // Promotional Sidebar Toggle
+        function togglePromoSidebar() {
+            const sidebar = document.getElementById('promoSidebar');
+            sidebar.classList.toggle('collapsed');
+        }
     </script>
 </body>
 
