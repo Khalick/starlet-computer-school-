@@ -62,10 +62,12 @@
 
         /* ===== CSS Variables ===== */
         :root {
-            --primary-color: #1e3a8a;
-            --primary-dark: #1e40af;
-            --secondary-color: #3b82f6;
-            --accent-color: #10b981;
+            --primary-color: #1a3a6e;
+            --primary-dark: #0f2a52;
+            --secondary-color: #2563eb;
+            --accent-color: #f5a623;
+            --accent-dark: #d4920d;
+            --gold: #f5a623;
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --white: #ffffff;
@@ -74,6 +76,16 @@
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --transition: all 0.3s ease;
+        }
+
+        .logo-starlet {
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        .logo-tech {
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         * {
@@ -892,7 +904,8 @@
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <h1>Starlet Computer Technology</h1>
+                    <h1><span class="logo-starlet">Starlet</span> <span class="logo-tech">Computer Technology</span>
+                    </h1>
                 </a>
             </div>
             <nav class="nav">

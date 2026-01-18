@@ -4,51 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Primary Meta Tags -->
     <title>Starlet Computer Technology | Best IT Training College in Nairobi, Kenya</title>
     <meta name="title" content="Starlet Computer Technology | Best IT Training College in Nairobi, Kenya">
-    <meta name="description" content="Starlet Computer Technology offers practical IT training courses in Nairobi. Learn Computer Packages, Web Design, Graphic Design, Data Analysis, SPSS, QuickBooks & more. Enroll now and start your tech career!">
-    <meta name="keywords" content="computer training Nairobi, IT courses Kenya, computer packages, web design course, graphic design training, data analysis course, SPSS training, QuickBooks course, coding classes Nairobi, Python course Kenya, computer college Umoja, ICT diploma Kenya, digital marketing course, tuition services Nairobi, homework help Kenya">
+    <meta name="description"
+        content="Starlet Computer Technology offers practical IT training courses in Nairobi. Learn Computer Packages, Web Design, Graphic Design, Data Analysis, SPSS, QuickBooks & more. Enroll now and start your tech career!">
+    <meta name="keywords"
+        content="computer training Nairobi, IT courses Kenya, computer packages, web design course, graphic design training, data analysis course, SPSS training, QuickBooks course, coding classes Nairobi, Python course Kenya, computer college Umoja, ICT diploma Kenya, digital marketing course, tuition services Nairobi, homework help Kenya">
     <meta name="author" content="Starlet Computer Technology">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <meta name="revisit-after" content="7 days">
     <link rel="canonical" href="https://starletcomputertechnology.co.ke/">
-    
+
     <!-- Geographic Meta Tags -->
     <meta name="geo.region" content="KE-30">
     <meta name="geo.placename" content="Nairobi">
     <meta name="geo.position" content="-1.2921;36.8219">
     <meta name="ICBM" content="-1.2921, 36.8219">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://starletcomputertechnology.co.ke/">
     <meta property="og:title" content="Starlet Computer Technology | Best IT Training College in Nairobi">
-    <meta property="og:description" content="Practical IT training courses in Nairobi. Learn Computer Packages, Web Design, Graphic Design, Data Analysis & more. Over 20,000 successful graduates!">
+    <meta property="og:description"
+        content="Practical IT training courses in Nairobi. Learn Computer Packages, Web Design, Graphic Design, Data Analysis & more. Over 20,000 successful graduates!">
     <meta property="og:image" content="https://starletcomputertechnology.co.ke/images/hero-bg.jpg">
     <meta property="og:image:alt" content="Starlet Computer Technology - IT Training in Nairobi">
     <meta property="og:site_name" content="Starlet Computer Technology">
     <meta property="og:locale" content="en_KE">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://starletcomputertechnology.co.ke/">
     <meta property="twitter:title" content="Starlet Computer Technology | Best IT Training College in Nairobi">
-    <meta property="twitter:description" content="Practical IT training courses in Nairobi. Learn Computer Packages, Web Design, Graphic Design, Data Analysis & more. Enroll now!">
+    <meta property="twitter:description"
+        content="Practical IT training courses in Nairobi. Learn Computer Packages, Web Design, Graphic Design, Data Analysis & more. Enroll now!">
     <meta property="twitter:image" content="https://starletcomputertechnology.co.ke/images/hero-bg.jpg">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Structured Data - Local Business -->
     <script type="application/ld+json">
     {
@@ -139,10 +144,12 @@
 
         /* ===== CSS Variables ===== */
         :root {
-            --primary-color: #1e3a8a;
-            --primary-dark: #1e40af;
-            --secondary-color: #3b82f6;
-            --accent-color: #10b981;
+            --primary-color: #1a3a6e;
+            --primary-dark: #0f2a52;
+            --secondary-color: #2563eb;
+            --accent-color: #f5a623;
+            --accent-dark: #d4920d;
+            --gold: #f5a623;
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --white: #ffffff;
@@ -208,13 +215,15 @@
         }
 
         .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--white);
+            background-color: var(--gold);
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         .btn-primary:hover {
-            background-color: var(--primary-dark);
+            background-color: var(--accent-dark);
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
         }
 
         .btn-secondary {
@@ -266,9 +275,20 @@
         }
 
         .logo h1 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-starlet {
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        .logo-tech {
             color: var(--primary-color);
+            font-weight: 600;
         }
 
         .nav {
@@ -461,25 +481,37 @@
 
         /* ===== CTA Section ===== */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--gold);
             padding: 80px 0;
             text-align: center;
         }
 
         .cta-content {
-            color: var(--white);
+            color: var(--primary-color);
         }
 
         .cta-content h2 {
             font-size: 36px;
             font-weight: 700;
             margin-bottom: 15px;
+            color: var(--primary-color);
         }
 
         .cta-content p {
             font-size: 18px;
             margin-bottom: 30px;
+            color: var(--primary-color);
             opacity: 0.9;
+        }
+
+        .cta-section .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .cta-section .btn-primary:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(26, 58, 110, 0.4);
         }
 
         /* ===== Contact Section ===== */
@@ -1512,7 +1544,8 @@
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <h1>Starlet Computer Technology</h1>
+                    <h1><span class="logo-starlet">Starlet</span> <span class="logo-tech">Computer Technology</span>
+                    </h1>
                 </a>
             </div>
             <nav class="nav">
